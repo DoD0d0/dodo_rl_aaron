@@ -1,0 +1,12 @@
+{"time":"2025-12-04T13:43:16.397548+01:00","level":"INFO","msg":"stream: starting","core version":"0.22.3"}
+{"time":"2025-12-04T13:43:16.695578+01:00","level":"INFO","msg":"stream: created new stream","id":"l341xkzx"}
+{"time":"2025-12-04T13:43:16.69567+01:00","level":"INFO","msg":"handler: started","stream_id":"l341xkzx"}
+{"time":"2025-12-04T13:43:16.695897+01:00","level":"INFO","msg":"stream: started","id":"l341xkzx"}
+{"time":"2025-12-04T13:43:16.695912+01:00","level":"INFO","msg":"writer: started","stream_id":"l341xkzx"}
+{"time":"2025-12-04T13:43:16.696164+01:00","level":"INFO","msg":"sender: started","stream_id":"l341xkzx"}
+{"time":"2025-12-04T15:43:38.822155+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/diemnight-techincal-university-of-munich/dodo-birdlike-gait-new/l341xkzx/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2025-12-04T15:43:40.834747+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/diemnight-techincal-university-of-munich/dodo-birdlike-gait-new/l341xkzx/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2025-12-04T15:59:27.058506+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/diemnight-techincal-university-of-munich/dodo-birdlike-gait-new/l341xkzx/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2025-12-04T16:28:57.949632+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/diemnight-techincal-university-of-munich/dodo-birdlike-gait-new/l341xkzx/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
+{"time":"2025-12-04T22:55:39.544588+01:00","level":"INFO","msg":"api: retrying HTTP error","status":502,"url":"https://api.wandb.ai/files/diemnight-techincal-university-of-munich/dodo-birdlike-gait-new/l341xkzx/file_stream","body":"\n<html><head>\n<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\">\n<title>502 Server Error</title>\n</head>\n<body text=#000000 bgcolor=#ffffff>\n<h1>Error: Server Error</h1>\n<h2>The server encountered a temporary error and could not complete your request.<p>Please try again in 30 seconds.</h2>\n<h2></h2>\n</body></html>\n"}
+{"time":"2025-12-05T14:05:35.333854+01:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/diemnight-techincal-university-of-munich/dodo-birdlike-gait-new/l341xkzx/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}

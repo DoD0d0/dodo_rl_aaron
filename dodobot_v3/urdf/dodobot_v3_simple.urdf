@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Collision meshes are replaced with primitive shapes & removed mimic joint definitions & aligned axes -->
+<robot
+  name="dodobot_v3">
+  <link name="base_link"/>
+
+  <joint name="base_to_body" type="fixed">
+    <!-- Rotate -90 degrees around Z-axis: aligns old +Y to new +X -->
+    <origin xyz="0 0 0" rpy="0 0 -1.5708"/>
+    <parent link="base_link"/>
+    <child link="body_link"/>
+  </joint>
+  <!-- ====================== body_link ====================== -->
+  <link
+    name="body_link">
+    <inertial>
+      <origin
+        xyz="-0.0049584 0.034185 -0.011531"
+        rpy="0 0 0"/>
+      <mass
+        value="3.9306" />
+      <inertia
+        ixx="0.0051203"
+        ixy="-3.2645E-06"
+        ixz="1.1521E-05"
+        iyy="0.0079906"
+        iyz="-5.4762E-05"
+        izz="0.0096283" />
+    </inertial>
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="/Users/aaronalexander/DoDodo/dodobot_v3/meshes/body_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.72941 0.60784 0.4902 1" />
+      </material>
+    </visual>
+
+    <collision> <!-- Simplified collision to box -->
+      <origin
+        xyz="0 0.0135 0.005"
+        rpy="0 0 0" />
+      <geometry>
+        <box
+          size="0.21 0.29 0.23" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ====================== right_link_1 ====================== -->
+  <link
+    name="right_link_1">
+    <inertial>
+      <origin
+        xyz="0.0026476 -0.011738 0.0034333"
+        rpy="-1.5708 0 -1.5708" />
+      <mass
+        value="0.087539" />
+      <inertia
+        ixx="6.8203E-05"
+        ixy="2.0289E-07"
+        ixz="2.4503E-07"
+        iyy="4.507E-05"
+        iyz="-9.4499E-06"
+        izz="2.9112E-05" />
+    </inertial>
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5708 0 1.5708" />
+      <geometry>
+        <mesh
+          filename="/Users/aaronalexander/DoDodo/dodobot_v3/meshes/right_link_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+
+    <!-- Omitted collision -->
+  </link>
+
+  <joint
+    name="right_joint_1"
+    type="revolute">
+    <origin
+      xyz="0.066 0 -0.092"
+      rpy="0 0 1.5708" />
+    <parent
+      link="body_link" />
+    <child
+      link="right_link_1" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-0.3"
+      upper="0.3"
+      effort="3"
+      velocity="5" />
+    <calibration
+      rising="0"
+      falling="0" />
+    <dynamics
+      damping="0"
+      friction="0" />
+    <safety_controller
+      soft_upper_limit="0"
+      soft_lower_limit="0"
+      k_position="0"
+      k_velocity="0" />
+  </joint>
+
+  <!-- ====================== right_link_2 ====================== -->
+  <link
+    name="right_link_2">
+    <inertial>
+      <origin
+        xyz="0.1097 -2.065E-05 0.033704"
+        rpy="0 0 0" />
+      <mass
+        value="0.10378" />
+      <inertia
+        ixx="1.6817E-05"
+        ixy="-6.9682E-08"
+        ixz="-1.2798E-05"
+        iyy="0.00026178"
+        iyz="-1.158E-08"
+        izz="0.00026814" />
+    </inertial>
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 1.5708 -1.5708" />
+      <geometry>
+        <mesh
+          filename="/Users/aaronalexander/DoDodo/dodobot_v3/meshes/right_link_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 -0.02 -0.0982" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.03" length="0.18" /> </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="right_joint_2"
+    type="revolute">
+    <origin
+      xyz="-0.01705 0 -0.04009"
+      rpy="0 0 0" />
+    <parent
+      link="right_link_1" />
+    <child
+      link="right_link_2" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="3"
+      velocity="5" />
+    <calibration
+      rising="0"
+      falling="0" />
+    <dynamics
+      damping="0"
+      friction="0" />
+    <safety_controller
+      soft_upper_limit="0"
+      soft_lower_limit="0"
+      k_position="0"
+      k_velocity="0" />
+  </joint>
+
+  <!-- ====================== right_link_3 ====================== -->
+  <link
+    name="right_link_3">
+    <inertial>
+      <origin
+        xyz="0.1097 -2.0643E-05 0.020754"
+        rpy="0 0 0" />
+      <mass
+        value="0.10378" />
+      <inertia
+        ixx="1.6823E-05"
+        ixy="-6.9496E-08"
+        ixz="-1.2798E-05"
+        iyy="0.00026179"
+        iyz="-1.1565E-08"
+        izz="0.00026814" />
+    </inertial>
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 1.5708 -1.5708" />
+      <geometry>
+        <mesh
+          filename="/Users/aaronalexander/DoDodo/dodobot_v3/meshes/right_link_3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+
+    <collision> <!-- Simplified collision to capsule -->
+      <origin
+        xyz="0 -0.02 -0.083"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.03" length="0.14" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="right_joint_3"
+    type="revolute">
+    <origin
+      xyz="0 -0.0504 -0.2"
+      rpy="0 0 0" />
+    <parent
+      link="right_link_2" />
+    <child
+      link="right_link_3" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="3"
+      velocity="5" />
+    <calibration
+      rising="0"
+      falling="0" />
+    <dynamics
+      damping="0"
+      friction="0" />
+    <safety_controller
+      soft_upper_limit="0"
+      soft_lower_limit="0"
+      k_position="0"
+      k_velocity="0" />
+  </joint>
+
+  <!-- ====================== right_link_4 ====================== -->
+  <link
+    name="right_link_4">
+    <inertial>
+      <origin
+        xyz="0.024153 0.012735 -0.0002114"
+        rpy="0 0 0" />
+      <mass
+        value="0.076373" />
+      <inertia
+        ixx="5.259E-05"
+        ixy="-3.6037E-06"
+        ixz="3.7304E-06"
+        iyy="1.9685E-05"
+        iyz="3.4416E-06"
+        izz="5.9438E-05" />
+    </inertial>
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5708 1.5708 0" />
+      <geometry>
+        <mesh
+          filename="/Users/aaronalexander/DoDodo/dodobot_v3/meshes/right_link_4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.72941 0.60784 0.4902 1" />
+      </material>
+    </visual>
+
+    <collision> <!-- Simplified collision to box -->
+      <origin
+        xyz="0.014 0.0047 -0.0119"
+        rpy="0 0 0" />
+      <geometry>
+        <box
+          size="0.095 0.036 0.0615" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="right_joint_4"
+    type="revolute">
+    <origin
+      xyz="0 -0.03745 -0.2"
+      rpy="0 0 0" />
+    <parent
+      link="right_link_3" />
+    <child
+      link="right_link_4" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="3"
+      velocity="5" />
+    <calibration
+      rising="0"
+      falling="0" />
+    <dynamics
+      damping="0"
+      friction="0" />
+    <safety_controller
+      soft_upper_limit="0"
+      soft_lower_limit="0"
+      k_position="0"
+      k_velocity="0" />
+  </joint>
+
+    <!-- ====================== left_link_1 ====================== -->
+  <link
+    name="left_link_1">
+    <inertial>
+      <origin
+        xyz="-0.0026466 -0.011737 0.0034336"
+        rpy="0 0 0" />
+      <mass
+        value="0.087538" />
+      <inertia
+        ixx="6.8201E-05"
+        ixy="-2.03E-07"
+        ixz="-2.4518E-07"
+        iyy="4.5069E-05"
+        iyz="-9.451E-06"
+        izz="2.9111E-05" />
+    </inertial>
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5708 0 1.5708" />
+      <geometry>
+        <mesh
+          filename="/Users/aaronalexander/DoDodo/dodobot_v3/meshes/left_link_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+
+    <!-- Omitted collsion -->
+  </link>
+
+  <joint
+    name="left_joint_1"
+    type="revolute">
+    <origin
+      xyz="-0.066 0 -0.092"
+      rpy="0 0 1.5708" />
+    <parent
+      link="body_link" />
+    <child
+      link="left_link_1" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-0.3"
+      upper="0.3"
+      effort="3"
+      velocity="5" />
+    <calibration
+      rising="0"
+      falling="0" />
+    <dynamics
+      damping="0"
+      friction="0" />
+    <safety_controller
+      soft_upper_limit="0"
+      soft_lower_limit="0"
+      k_position="0"
+      k_velocity="0" />
+  </joint>
+
+  <!-- ====================== left_link_2 ====================== -->
+  <link
+    name="left_link_2">
+    <inertial>
+      <origin
+        xyz="0.1097 2.062E-05 -0.020754"
+        rpy="0 0 0" />
+      <mass
+        value="0.10378" />
+      <inertia
+        ixx="1.6817E-05"
+        ixy="6.9493E-08"
+        ixz="1.2798E-05"
+        iyy="0.00026179"
+        iyz="-1.1565E-08"
+        izz="0.00026814" />
+    </inertial>
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5708 1.5708 0" />
+      <geometry>
+        <mesh
+          filename="/Users/aaronalexander/DoDodo/dodobot_v3/meshes/left_link_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+
+    <collision> <!-- Simplified collision to capsule -->
+      <origin
+        xyz="0 0.007 -0.0982"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.03" length="0.18" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="left_joint_2"
+    type="revolute">
+    <origin
+      xyz="-0.01705 0.01295 -0.04009"
+      rpy="0 0 0" />
+    <parent
+      link="left_link_1" />
+    <child
+      link="left_link_2" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="3"
+      velocity="5" />
+    <calibration
+      rising="0"
+      falling="0" />
+    <dynamics
+      damping="0"
+      friction="0" />
+    <safety_controller
+      soft_upper_limit="0"
+      soft_lower_limit="0"
+      k_position="0"
+      k_velocity="0" />
+  </joint>
+
+  <!-- ====================== left_link_3 ====================== -->
+  <link
+    name="left_link_3">
+    <inertial>
+      <origin
+        xyz="0.1097 2.0626E-05 -0.020754"
+        rpy="0 0 0" />
+      <mass
+        value="0.10378" />
+      <inertia
+        ixx="1.6824E-05"
+        ixy="6.9507E-08"
+        ixz="1.2798E-05"
+        iyy="0.00026179"
+        iyz="-1.1565E-08"
+        izz="0.00026814" />
+    </inertial>
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5708 1.5708 0" />
+      <geometry>
+        <mesh
+          filename="/Users/aaronalexander/DoDodo/dodobot_v3/meshes/left_link_3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+
+    <collision> <!-- Simplified collision to capsule -->
+      <origin
+        xyz="0 0.02 -0.083"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.03" length="0.14" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint
+    name="left_joint_3"
+    type="revolute">
+    <origin
+      xyz="0 0.03745 -0.2"
+      rpy="0 0 0" />
+    <parent
+      link="left_link_2" />
+    <child
+      link="left_link_3" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="3"
+      velocity="5" />
+    <calibration
+      rising="0"
+      falling="0" />
+    <dynamics
+      damping="0"
+      friction="0" />
+    <safety_controller
+      soft_upper_limit="0"
+      soft_lower_limit="0"
+      k_position="0"
+      k_velocity="0" />
+  </joint>
+
+    <!-- ====================== left_link_4 ====================== -->
+  <link
+    name="left_link_4">
+    <inertial>
+      <origin
+        xyz="0.024153 0.012735 0.00021302"
+        rpy="0 0 0" />
+      <mass
+        value="0.076373" />
+      <inertia
+        ixx="5.259E-05"
+        ixy="-3.6036E-06"
+        ixz="-3.7303E-06"
+        iyy="1.9685E-05"
+        iyz="-3.4416E-06"
+        izz="5.9438E-05" />
+    </inertial>
+
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 1.5708 -1.5708" />
+      <geometry>
+        <mesh
+          filename="/Users/aaronalexander/DoDodo/dodobot_v3/meshes/left_link_4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.72941 0.60784 0.4902 1" />
+      </material>
+    </visual>
+
+    <collision> <!-- Simplified collision to box -->
+      <origin
+        xyz="0.014 -0.0045 -0.0119"
+        rpy="0 0 0" />
+      <geometry>
+        <box
+          size="0.095 0.036 0.0615" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ========== left_joint_4 ========== -->
+  <joint
+    name="left_joint_4"
+    type="revolute">
+    <origin
+      xyz="0 0.03745 -0.2"
+      rpy="0 0 0" />
+    <parent
+      link="left_link_3" />
+    <child
+      link="left_link_4" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.5"
+      upper="1.5"
+      effort="3"
+      velocity="5" />
+    <calibration
+      rising="0"
+      falling="0" />
+    <dynamics
+      damping="0"
+      friction="0" />
+    <safety_controller
+      soft_upper_limit="0"
+      soft_lower_limit="0"
+      k_position="0"
+      k_velocity="0" />
+  </joint>
+
+</robot>

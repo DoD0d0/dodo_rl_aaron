@@ -1,0 +1,6 @@
+{"time":"2025-12-07T14:26:56.662887+01:00","level":"INFO","msg":"stream: starting","core version":"0.22.3"}
+{"time":"2025-12-07T14:26:56.969881+01:00","level":"INFO","msg":"stream: created new stream","id":"dyaqon5z"}
+{"time":"2025-12-07T14:26:56.970292+01:00","level":"INFO","msg":"handler: started","stream_id":"dyaqon5z"}
+{"time":"2025-12-07T14:26:56.970391+01:00","level":"INFO","msg":"stream: started","id":"dyaqon5z"}
+{"time":"2025-12-07T14:26:56.970424+01:00","level":"INFO","msg":"writer: started","stream_id":"dyaqon5z"}
+{"time":"2025-12-07T14:26:56.970427+01:00","level":"INFO","msg":"sender: started","stream_id":"dyaqon5z"}

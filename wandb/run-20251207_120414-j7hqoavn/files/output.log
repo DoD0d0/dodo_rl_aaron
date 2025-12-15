@@ -1,0 +1,57 @@
+/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/site-packages/genesis/engine/solvers/rigid/support_field_decomp.py:72: RuntimeWarning: divide by zero encountered in matmul
+  dot_chunk = v1[i:end] @ this_pos.T
+/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/site-packages/genesis/engine/solvers/rigid/support_field_decomp.py:72: RuntimeWarning: overflow encountered in matmul
+  dot_chunk = v1[i:end] @ this_pos.T
+/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/site-packages/genesis/engine/solvers/rigid/support_field_decomp.py:72: RuntimeWarning: invalid value encountered in matmul
+  dot_chunk = v1[i:end] @ this_pos.T
+/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/site-packages/genesis/engine/solvers/rigid/rigid_solver_decomp.py:357: RuntimeWarning: divide by zero encountered in matmul
+  mass_mat_inv = (mass_mat_L_inv * mass_mat_D_inv[:, i_b]) @ mass_mat_L_inv.T
+/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/site-packages/genesis/engine/solvers/rigid/rigid_solver_decomp.py:357: RuntimeWarning: overflow encountered in matmul
+  mass_mat_inv = (mass_mat_L_inv * mass_mat_D_inv[:, i_b]) @ mass_mat_L_inv.T
+/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/site-packages/genesis/engine/solvers/rigid/rigid_solver_decomp.py:357: RuntimeWarning: invalid value encountered in matmul
+  mass_mat_inv = (mass_mat_L_inv * mass_mat_D_inv[:, i_b]) @ mass_mat_L_inv.T
+/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/site-packages/gstaichi/lang/ast/ast_transformers/call_transformer.py:225: DeprecationWarning: keyword.__init__ got an unexpected keyword argument 'ctx'. Support for arbitrary keyword arguments is deprecated and will be removed in Python 3.15.
+  kwarg_node = ast.keyword(
+Actor MLP: Sequential(
+  (0): Linear(in_features=36, out_features=512, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=512, out_features=256, bias=True)
+  (3): ELU(alpha=1.0)
+  (4): Linear(in_features=256, out_features=128, bias=True)
+  (5): ELU(alpha=1.0)
+  (6): Linear(in_features=128, out_features=8, bias=True)
+)
+Critic MLP: Sequential(
+  (0): Linear(in_features=36, out_features=512, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=512, out_features=256, bias=True)
+  (3): ELU(alpha=1.0)
+  (4): Linear(in_features=256, out_features=128, bias=True)
+  (5): ELU(alpha=1.0)
+  (6): Linear(in_features=128, out_features=1, bias=True)
+)
+Traceback (most recent call last):
+  File "/Users/aaronalexander/DoDodo/dodo_train_new.py", line 380, in <module>
+    main()
+    ~~~~^^
+  File "/Users/aaronalexander/DoDodo/dodo_train_new.py", line 374, in main
+    runner.learn(num_learning_iterations=args.max_iterations, init_at_random_ep_len=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aaronalexander/DoDodo/dodo_train_new.py", line 337, in learn
+    mean_logs.setdefault(clean_name, []).append(v.mean().cpu().item())
+                                                ^^^^^^
+AttributeError: 'float' object has no attribute 'mean'
+Traceback (most recent call last):
+  File "/Users/aaronalexander/DoDodo/dodo_train_new.py", line 380, in <module>
+    main()
+    ~~~~^^
+  File "/Users/aaronalexander/DoDodo/dodo_train_new.py", line 374, in main
+    runner.learn(num_learning_iterations=args.max_iterations, init_at_random_ep_len=True)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aaronalexander/DoDodo/dodo_train_new.py", line 337, in learn
+    mean_logs.setdefault(clean_name, []).append(v.mean().cpu().item())
+                                                ^^^^^^
+AttributeError: 'float' object has no attribute 'mean'
+
+[38;5;9m[Genesis] [12:05:26] [ERROR] AttributeError: 'float' object has no attribute 'mean'[0m
+[0m

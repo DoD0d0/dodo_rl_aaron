@@ -1,0 +1,1641 @@
+/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/site-packages/genesis/engine/solvers/rigid/support_field_decomp.py:72: RuntimeWarning: divide by zero encountered in matmul
+  dot_chunk = v1[i:end] @ this_pos.T
+/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/site-packages/genesis/engine/solvers/rigid/support_field_decomp.py:72: RuntimeWarning: overflow encountered in matmul
+  dot_chunk = v1[i:end] @ this_pos.T
+/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/site-packages/genesis/engine/solvers/rigid/support_field_decomp.py:72: RuntimeWarning: invalid value encountered in matmul
+  dot_chunk = v1[i:end] @ this_pos.T
+/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/site-packages/genesis/engine/solvers/rigid/rigid_solver_decomp.py:357: RuntimeWarning: divide by zero encountered in matmul
+  mass_mat_inv = (mass_mat_L_inv * mass_mat_D_inv[:, i_b]) @ mass_mat_L_inv.T
+/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/site-packages/genesis/engine/solvers/rigid/rigid_solver_decomp.py:357: RuntimeWarning: overflow encountered in matmul
+  mass_mat_inv = (mass_mat_L_inv * mass_mat_D_inv[:, i_b]) @ mass_mat_L_inv.T
+/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/site-packages/genesis/engine/solvers/rigid/rigid_solver_decomp.py:357: RuntimeWarning: invalid value encountered in matmul
+  mass_mat_inv = (mass_mat_L_inv * mass_mat_D_inv[:, i_b]) @ mass_mat_L_inv.T
+/opt/homebrew/Caskroom/miniconda/base/lib/python3.13/site-packages/gstaichi/lang/ast/ast_transformers/call_transformer.py:225: DeprecationWarning: keyword.__init__ got an unexpected keyword argument 'ctx'. Support for arbitrary keyword arguments is deprecated and will be removed in Python 3.15.
+  kwarg_node = ast.keyword(
+
+=== Robot Setup Debug Info ===
+Robot DOF indices: [7, 6, 9, 8, 11, 10, 13, 12]
+Default positions: tensor([ 0.0000,  0.0000,  0.6000, -0.6000, -1.1000,  1.1000,  0.0000,  0.0000],
+       device='mps:0')
+Joint names: ['left_joint_1', 'right_joint_1', 'left_joint_2', 'right_joint_2', 'left_joint_3', 'right_joint_3', 'left_joint_4', 'right_joint_4']
+Number of actions: 8
+KP: 40.0, KD: 12.649110640673518
+=== Setup Complete ===
+
+After reset - pos: tensor([0.0000, 0.0000, 0.5000], device='mps:0'), quat: tensor([1., 0., 0., 0.], device='mps:0')
+Default dof_pos: tensor([ 0.0000,  0.0000,  0.6000, -0.6000, -1.1000,  1.1000,  0.0000,  0.0000],
+       device='mps:0')
+Actor MLP: Sequential(
+  (0): Linear(in_features=36, out_features=512, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=512, out_features=256, bias=True)
+  (3): ELU(alpha=1.0)
+  (4): Linear(in_features=256, out_features=128, bias=True)
+  (5): ELU(alpha=1.0)
+  (6): Linear(in_features=128, out_features=8, bias=True)
+)
+Critic MLP: Sequential(
+  (0): Linear(in_features=36, out_features=512, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=512, out_features=256, bias=True)
+  (3): ELU(alpha=1.0)
+  (4): Linear(in_features=256, out_features=128, bias=True)
+  (5): ELU(alpha=1.0)
+  (6): Linear(in_features=128, out_features=1, bias=True)
+)
+After reset - pos: tensor([0.0000, 0.0000, 0.5000], device='mps:0'), quat: tensor([1., 0., 0., 0.], device='mps:0')
+Default dof_pos: tensor([ 0.0000,  0.0000,  0.6000, -0.6000, -1.1000,  1.1000,  0.0000,  0.0000],
+       device='mps:0')
+
+=== Env 49 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.832506  12.831363  -6.173241]
+Lin vel: [0. 0. 0.]
+Command: [ 0.2821837  -0.02846298 -0.27507615]
+Actions: [ 1.          0.59372187  0.12743229  1.         -0.01151573 -0.8765897
+ -0.18328193 -1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1671
+  tracking_lin_vel: 0.0210
+  tracking_ang_vel: 0.0055
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 267 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.706339    1.6021378 -27.3568   ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.20778829 -0.01480003  0.14038476]
+Actions: [ 0.72383565  0.48238006 -1.         -1.         -1.         -1.
+  0.10527647 -1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1567
+  tracking_lin_vel: 0.0283
+  tracking_ang_vel: 0.0085
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 6 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.058767  10.595628  -7.497626]
+Lin vel: [0. 0. 0.]
+Command: [0.22766852 0.08528604 0.05755419]
+Actions: [-0.31733552  0.2479288   1.         -0.81232685  0.01818892 -0.19673023
+  1.         -1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1589
+  tracking_lin_vel: 0.0249
+  tracking_ang_vel: 0.0097
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 7 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.45221     3.2969933 -20.633871 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.14561439  0.04605048 -0.24980071]
+Actions: [ 0.11675176 -1.          1.          0.93674475 -0.58072686 -1.
+  0.15508159  1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1543
+  tracking_lin_vel: 0.0332
+  tracking_ang_vel: 0.0061
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 91 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.735254   9.765367 -26.445042]
+Lin vel: [0. 0. 0.]
+Command: [ 0.273249   -0.08372781  0.12296519]
+Actions: [ 0.5470987  -0.5493199   1.         -1.          0.72056746 -0.19320565
+  0.90747154  0.03828136]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1639
+  tracking_lin_vel: 0.0208
+  tracking_ang_vel: 0.0089
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 9 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.041153   -0.2203877 -26.147556 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.12218797  0.07805002 -0.08543423]
+Actions: [ 0.19167802  1.          0.23992246 -0.77651304  0.7885897   0.25240925
+  0.42786285  0.27496362]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1503
+  tracking_lin_vel: 0.0338
+  tracking_ang_vel: 0.0094
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 32 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.690779  -4.72113  -18.0195  ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.18082866 -0.00371723 -0.2771297 ]
+Actions: [-1.         -1.          1.          0.31463516  1.         -0.01267055
+  0.11078238  1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1573
+  tracking_lin_vel: 0.0308
+  tracking_ang_vel: 0.0054
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 43 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.75947   11.100148 -16.29342 ]
+Lin vel: [0. 0. 0.]
+Command: [0.2047748  0.04248457 0.04435715]
+Actions: [-0.41101786  0.3508883  -1.         -1.          0.6215268  -1.
+ -0.2517023  -1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1555
+  tracking_lin_vel: 0.0282
+  tracking_ang_vel: 0.0098
+  base_height: 0.0065
+  fall_penalty: -0.2000
+After reset - pos: tensor([0.0000, 0.0000, 0.5000], device='mps:0'), quat: tensor([1., 0., 0., 0.], device='mps:0')
+Default dof_pos: tensor([ 0.0000,  0.0000,  0.6000, -0.6000, -1.1000,  1.1000,  0.0000,  0.0000],
+       device='mps:0')
+
+=== Env 0 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.083664   -2.9584658 -28.389908 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.11215425 -0.00520291 -0.14468522]
+Actions: [-6.6396570e-01  2.7222961e-01  1.3166033e-01  1.0000000e+00
+  1.0000000e+00  1.0000000e+00  5.7437515e-01 -3.7212670e-04]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1489
+  tracking_lin_vel: 0.0362
+  tracking_ang_vel: 0.0085
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 1 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.876888     0.36198664 -25.108927  ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.12313914  0.04821012 -0.05894466]
+Actions: [ 0.557969   -1.         -0.96775126 -1.          0.5199592  -1.
+ -1.          1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1490
+  tracking_lin_vel: 0.0348
+  tracking_ang_vel: 0.0097
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 2 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.859507   11.5892105   2.174706 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.2540521  -0.03501685  0.13589644]
+Actions: [ 1.          0.5562815   0.07431677  0.74249357 -0.7539121   0.49412555
+ -0.5087602   0.17652288]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1613
+  tracking_lin_vel: 0.0236
+  tracking_ang_vel: 0.0086
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 10 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.60155     5.5004487 -29.917978 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.18796006 -0.03820524 -0.02763304]
+Actions: [-0.1204549   1.          1.         -0.7231684  -1.          0.00123763
+ -0.06184227 -0.15658739]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1538
+  tracking_lin_vel: 0.0298
+  tracking_ang_vel: 0.0099
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 12 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.97926     5.3922796   2.393859 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.21156913  0.08824911 -0.24389556]
+Actions: [-0.8935779  -0.45189044  0.30383596 -0.5358471   0.877458   -0.11315902
+ -0.32541513 -1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1611
+  tracking_lin_vel: 0.0263
+  tracking_ang_vel: 0.0062
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 15 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.535543  -7.036983 -43.90355 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.2170189  -0.06837211  0.02971086]
+Actions: [-0.00421372  0.5518634   0.6628197   1.          0.23443902  1.
+ -0.44875452  0.91248274]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1572
+  tracking_lin_vel: 0.0264
+  tracking_ang_vel: 0.0099
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 3 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.15281    18.710865    1.3601998]
+Lin vel: [0. 0. 0.]
+Command: [0.18026882 0.09890259 0.16452119]
+Actions: [ 0.10420807  0.6695418  -0.5677634   0.08199899 -0.6547192  -1.
+ -0.03509296 -0.50210553]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1570
+  tracking_lin_vel: 0.0285
+  tracking_ang_vel: 0.0081
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 13 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-3.0913343e+01 -1.3563049e-02 -2.6642843e+01]
+Lin vel: [0. 0. 0.]
+Command: [ 0.1447655  -0.01720119  0.24527681]
+Actions: [ 0.35716927 -0.1347552  -1.          0.30720663 -0.19485612 -0.9571873
+  0.5076271  -1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1536
+  tracking_lin_vel: 0.0337
+  tracking_ang_vel: 0.0062
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 22 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.384293    9.53791    -5.8441596]
+Lin vel: [0. 0. 0.]
+Command: [0.2860662  0.00353718 0.08622015]
+Actions: [-0.3841525  -1.         -0.03152924 -0.05006571  1.          0.6488824
+ -0.49692687 -0.43112534]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1633
+  tracking_lin_vel: 0.0208
+  tracking_ang_vel: 0.0094
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 5 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.458588   -5.1593504 -28.51074  ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.13568299 -0.04458406 -0.26436725]
+Actions: [ 1.          0.2814818   0.15633059  0.50367653  1.          1.
+ -0.38940537 -0.5059489 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1538
+  tracking_lin_vel: 0.0340
+  tracking_ang_vel: 0.0057
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 11 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.766476   -7.1572304 -33.702896 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.11556766 -0.00116406  0.15548858]
+Actions: [-0.7842713   0.2717956   0.82866585  1.         -0.03541856  0.42187178
+ -1.          0.06442404]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1494
+  tracking_lin_vel: 0.0359
+  tracking_ang_vel: 0.0082
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 14 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.89099   -5.104062 -42.96375 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.2038342  -0.04092882  0.05054963]
+Actions: [-0.03844611 -0.7334447   1.         -0.11455765  0.46202022 -0.03982977
+ -0.867229   -0.26080662]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1555
+  tracking_lin_vel: 0.0283
+  tracking_ang_vel: 0.0098
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 8 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.971874   6.349092  -2.746623]
+Lin vel: [0. 0. 0.]
+Command: [ 0.1438292  -0.03326788  0.05633518]
+Actions: [-0.72269535  1.          0.8312655   0.37781268  0.72793216  0.5650293
+ -0.44773573  0.16491127]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1502
+  tracking_lin_vel: 0.0336
+  tracking_ang_vel: 0.0097
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 21 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.291103   2.645315 -10.470485]
+Lin vel: [0. 0. 0.]
+Command: [ 0.23709485  0.03400845 -0.15272899]
+Actions: [ 0.06633517  1.          0.3075521  -0.27545336  0.16392264 -0.14444523
+ -1.         -0.52617323]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1600
+  tracking_lin_vel: 0.0253
+  tracking_ang_vel: 0.0083
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 35 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.434912   13.24511    -1.3525435]
+Lin vel: [0. 0. 0.]
+Command: [ 0.11801264  0.01172721 -0.2967592 ]
+Actions: [ 0.06665683 -0.18066883  0.06033447 -1.         -0.5205526   0.34804666
+ -0.7914869   1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1529
+  tracking_lin_vel: 0.0357
+  tracking_ang_vel: 0.0049
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 82 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.1694     7.485045  -7.13087 ]
+Lin vel: [0. 0. 0.]
+Command: [0.24899846 0.04325264 0.02239087]
+Actions: [-0.36994117  0.30983937 -1.          0.19136314  1.          0.50265276
+ -0.9454911  -1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1596
+  tracking_lin_vel: 0.0240
+  tracking_ang_vel: 0.0100
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 88 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.450172    3.5185401 -23.480793 ]
+Lin vel: [0. 0. 0.]
+Command: [0.20045598 0.06876207 0.17650923]
+Actions: [-1.         -0.65069675  0.10007245  0.6792454   0.46847188 -0.96234584
+ -1.         -0.6376964 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1578
+  tracking_lin_vel: 0.0279
+  tracking_ang_vel: 0.0078
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 90 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.225227  -7.494374 -46.872307]
+Lin vel: [0. 0. 0.]
+Command: [ 0.20566586 -0.05048304  0.13428363]
+Actions: [-0.4339659  -0.54967606  0.90296066 -0.86193335 -0.9360404   0.723424
+  0.8117013  -0.5886402 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1569
+  tracking_lin_vel: 0.0279
+  tracking_ang_vel: 0.0087
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 34 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.940918    -0.95515746 -25.294222  ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.27880305  0.01375346 -0.08145991]
+Actions: [-0.18380058  0.10531551 -1.         -0.65966666 -1.         -0.6361245
+  1.          0.5541204 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1626
+  tracking_lin_vel: 0.0214
+  tracking_ang_vel: 0.0095
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 99 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.914772    1.3381478 -15.785415 ]
+Lin vel: [0. 0. 0.]
+Command: [0.26339015 0.04642711 0.1075038 ]
+Actions: [ 0.06828511  1.         -0.7679194  -0.5157828  -0.48582438 -0.44241363
+  0.68050206  0.87560755]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1619
+  tracking_lin_vel: 0.0226
+  tracking_ang_vel: 0.0091
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 112 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-33.151222  17.1005     0.697919]
+Lin vel: [0. 0. 0.]
+Command: [ 0.1790463  -0.08336695 -0.20785204]
+Actions: [-0.5310372   1.         -0.6815874  -1.          1.          0.14930111
+  0.66134405  0.910288  ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1572
+  tracking_lin_vel: 0.0293
+  tracking_ang_vel: 0.0071
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 267 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.183746   5.000092 -25.37621 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.16564602  0.07384648 -0.13843775]
+Actions: [-0.19075179 -0.92857873 -0.13050261 -1.          1.          0.35564706
+ -1.          1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1542
+  tracking_lin_vel: 0.0307
+  tracking_ang_vel: 0.0086
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 467 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.537596    6.961286   -5.7451253]
+Lin vel: [0. 0. 0.]
+Command: [ 0.2847227  -0.03251541 -0.09430647]
+Actions: [-0.11809085  1.          0.12469815 -0.3428907  -0.32532132 -0.12990572
+ -0.434642    1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1635
+  tracking_lin_vel: 0.0207
+  tracking_ang_vel: 0.0093
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 496 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.756323  10.148773 -17.134663]
+Lin vel: [0. 0. 0.]
+Command: [0.14146528 0.01160207 0.09683275]
+Actions: [ 0.7710171  -0.5979053   0.9854382  -0.9093389   1.          0.58527297
+ -1.          0.3410974 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1502
+  tracking_lin_vel: 0.0340
+  tracking_ang_vel: 0.0093
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 60 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.048508  14.765753  -7.372306]
+Lin vel: [0. 0. 0.]
+Command: [0.10968476 0.09551526 0.13936952]
+Actions: [ 0.847676    0.84823424 -1.         -0.59429413 -0.93834704 -1.
+  0.9407776   0.5948763 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1512
+  tracking_lin_vel: 0.0338
+  tracking_ang_vel: 0.0086
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 214 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.67074    12.273705    0.7882749]
+Lin vel: [0. 0. 0.]
+Command: [ 0.27261135 -0.06946252 -0.29413855]
+Actions: [-1.         -0.72382265  0.22863877 -0.14604338 -1.         -0.7501134
+  1.          0.73226744]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1673
+  tracking_lin_vel: 0.0212
+  tracking_ang_vel: 0.0050
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 342 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.140919  12.838575  -9.294055]
+Lin vel: [0. 0. 0.]
+Command: [ 0.15942028  0.08387262 -0.14974588]
+Actions: [-0.9060557   0.16159613  0.03531701 -1.         -0.33487082 -0.809857
+ -1.          0.22402093]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1543
+  tracking_lin_vel: 0.0309
+  tracking_ang_vel: 0.0084
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 6 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.659071   9.134858  -8.288603]
+Lin vel: [0. 0. 0.]
+Command: [ 0.17273545  0.05134799 -0.09440617]
+Actions: [ 1.          1.         -0.65259856  1.          1.         -1.
+  0.8495808  -0.7672821 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1534
+  tracking_lin_vel: 0.0308
+  tracking_ang_vel: 0.0093
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 7 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.42013   -1.443606 -28.669548]
+Lin vel: [0. 0. 0.]
+Command: [ 0.21188682 -0.00158112 -0.0367617 ]
+Actions: [-1.         -0.21712154 -0.25210643 -1.          0.39363    -1.
+ -1.         -0.62704027]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1557
+  tracking_lin_vel: 0.0279
+  tracking_ang_vel: 0.0099
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 54 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.562664   9.96635  -37.148396]
+Lin vel: [0. 0. 0.]
+Command: [ 0.25312904 -0.00212283  0.2916677 ]
+Actions: [ 0.16132233 -0.6588543   0.78967553 -0.8957566   0.8931151  -0.01491501
+ -1.         -0.4170013 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1645
+  tracking_lin_vel: 0.0240
+  tracking_ang_vel: 0.0051
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 9 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.138073    6.5387273 -11.842501 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.21972841 -0.0128568   0.01812321]
+Actions: [-0.60806894  1.         -1.          1.          1.          0.3804925
+  1.         -0.20008451]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1564
+  tracking_lin_vel: 0.0271
+  tracking_ang_vel: 0.0100
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 17 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.135363   4.927238 -12.898361]
+Lin vel: [0. 0. 0.]
+Command: [ 0.14998028 -0.04327934 -0.29761112]
+Actions: [ 1.         -1.         -1.          0.37696016  1.         -1.
+  0.43411696 -1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1557
+  tracking_lin_vel: 0.0329
+  tracking_ang_vel: 0.0049
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 29 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.222153     6.8603835   -0.38319933]
+Lin vel: [0. 0. 0.]
+Command: [ 0.14346889  0.01612711 -0.06438561]
+Actions: [-1.         -0.9190266   0.8766339   1.          0.9878943   0.11189824
+  0.62986994  0.35441685]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1500
+  tracking_lin_vel: 0.0339
+  tracking_ang_vel: 0.0097
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 13 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.145594    3.6445198 -18.415674 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.2618374  -0.01693418  0.04863632]
+Actions: [ 0.706564   -0.8503507  -0.12066372 -0.20864436 -0.4794253  -0.13915008
+ -0.49422687 -0.01007658]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1607
+  tracking_lin_vel: 0.0231
+  tracking_ang_vel: 0.0098
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 62 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.830265    13.178625     0.40715286]
+Lin vel: [0. 0. 0.]
+Command: [0.11175084 0.03646571 0.0840176 ]
+Actions: [ 0.16587612  0.3555815   0.59990394 -0.42167205 -0.7300981  -0.512974
+ -0.14395854 -0.9874154 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1483
+  tracking_lin_vel: 0.0358
+  tracking_ang_vel: 0.0095
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 65 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.00675    6.389814 -19.92017 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.268447   -0.09267175  0.12329644]
+Actions: [ 0.7400437  -1.         -0.6780936  -0.56692773  0.01282179 -0.5276233
+ -1.          0.03502973]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1637
+  tracking_lin_vel: 0.0210
+  tracking_ang_vel: 0.0089
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 1 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.568916    4.6314125 -17.144249 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.29957536 -0.0445965  -0.20909193]
+Actions: [-1.         -0.21173686  0.4744623  -1.          0.82132274  0.36803925
+ -0.34006768  0.833872  ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1673
+  tracking_lin_vel: 0.0192
+  tracking_ang_vel: 0.0070
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 2 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.873095  24.17066    8.926878]
+Lin vel: [0. 0. 0.]
+Command: [0.28243598 0.08346655 0.0854542 ]
+Actions: [-0.79167914  0.5929595   0.3299622  -1.         -0.01136777  0.00378517
+  0.31634787  1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1641
+  tracking_lin_vel: 0.0200
+  tracking_ang_vel: 0.0094
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 10 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.292316   8.535447 -12.22727 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.12741902 -0.03930838  0.23960602]
+Actions: [-1.         -1.          1.         -0.35609293 -0.08286253 -0.264445
+ -1.          0.3800959 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1525
+  tracking_lin_vel: 0.0347
+  tracking_ang_vel: 0.0063
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 8 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.8939      2.4908054 -23.912819 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.19566315  0.08832145 -0.14541951]
+Actions: [-1.          0.84162843  0.4486871  -1.          0.6004683  -0.4934648
+  0.01081206 -1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1574
+  tracking_lin_vel: 0.0277
+  tracking_ang_vel: 0.0084
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 14 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.171051    3.3515618 -24.375927 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.28889507  0.08058805 -0.04918784]
+Actions: [ 0.0178079   1.          0.8739347  -1.          0.21145824  0.5575837
+  0.240682    0.8425688 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1643
+  tracking_lin_vel: 0.0195
+  tracking_ang_vel: 0.0098
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 20 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.766117   3.448623 -24.927591]
+Lin vel: [0. 0. 0.]
+Command: [ 0.26515457 -0.07717037 -0.27836215]
+Actions: [-0.4703942  -1.          0.9683762   0.11740927 -0.31861782 -0.17738298
+ -1.          1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1664
+  tracking_lin_vel: 0.0217
+  tracking_ang_vel: 0.0054
+  base_height: 0.0065
+  fall_penalty: -0.2000
+After reset - pos: tensor([0.0000, 0.0000, 0.5000], device='mps:0'), quat: tensor([1., 0., 0., 0.], device='mps:0')
+Default dof_pos: tensor([ 0.0000,  0.0000,  0.6000, -0.6000, -1.1000,  1.1000,  0.0000,  0.0000],
+       device='mps:0')
+
+=== Env 0 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.930992 -12.007736 -33.694397]
+Lin vel: [0. 0. 0.]
+Command: [ 0.24308735  0.0680526  -0.2522112 ]
+Actions: [ 1.          0.6478066   1.          0.38199675  0.41503188 -1.
+  0.47526333 -1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1635
+  tracking_lin_vel: 0.0240
+  tracking_ang_vel: 0.0060
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 4 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.105434   9.802482 -13.873206]
+Lin vel: [0. 0. 0.]
+Command: [ 0.1412061  -0.01032948  0.0159803 ]
+Actions: [ 0.23464495  1.          1.         -1.          0.13419484  0.99313825
+  0.1781759   1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1495
+  tracking_lin_vel: 0.0341
+  tracking_ang_vel: 0.0100
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 18 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.900099   5.739199 -31.54498 ]
+Lin vel: [0. 0. 0.]
+Command: [0.15552106 0.05559812 0.05785346]
+Actions: [-0.17493804 -1.          1.          0.7888267  -0.42366555 -0.63344
+ -0.7835425  -0.04856329]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1516
+  tracking_lin_vel: 0.0322
+  tracking_ang_vel: 0.0097
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 3 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.749    -12.209642 -36.4279  ]
+Lin vel: [0. 0. 0.]
+Command: [0.24855527 0.0427402  0.09786272]
+Actions: [ 1.          1.         -1.          0.2907709  -0.23476289 -0.9275451
+ -1.          0.45204097]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1602
+  tracking_lin_vel: 0.0240
+  tracking_ang_vel: 0.0093
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 12 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.907532     0.37406075 -12.165813  ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.13087256 -0.06745517 -0.20790075]
+Actions: [ 0.32812268 -1.          0.72828954 -0.7070407  -0.8529076   0.649536
+  1.         -0.7050626 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1528
+  tracking_lin_vel: 0.0336
+  tracking_ang_vel: 0.0071
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 16 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.341602    7.7060194  -8.387488 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.18277025 -0.06860574  0.14412174]
+Actions: [ 0.24293292 -0.82723504 -0.71286434 -0.05454346 -0.3791562  -0.15737516
+ -1.         -0.5512847 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1556
+  tracking_lin_vel: 0.0295
+  tracking_ang_vel: 0.0085
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 5 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.324955    4.1361866 -18.463917 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.23400766 -0.08534918  0.00254744]
+Actions: [-1.          1.         -1.         -1.          0.38836277 -1.
+  1.          0.8211283 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1592
+  tracking_lin_vel: 0.0243
+  tracking_ang_vel: 0.0100
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 46 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.792965   -4.5466776 -33.593746 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.26453927  0.07679296 -0.13743496]
+Actions: [ 0.48384055  0.16966368  0.14945878  0.1888548  -0.49195284 -0.96771574
+ -1.          1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1631
+  tracking_lin_vel: 0.0218
+  tracking_ang_vel: 0.0086
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 48 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.038952    -0.24403872 -23.370749  ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.23267153 -0.00270853  0.01246184]
+Actions: [-0.25442886 -0.9469192  -0.7401468  -1.         -1.         -0.5503545
+  0.9523008  -0.36930057]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1576
+  tracking_lin_vel: 0.0259
+  tracking_ang_vel: 0.0100
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 23 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.3338    13.296938  -9.38146 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.11386483  0.09546182 -0.09899619]
+Actions: [ 1.         -0.6779885  -1.         -0.2903655   0.03412238 -0.5598359
+  0.74932104  0.4968198 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1508
+  tracking_lin_vel: 0.0335
+  tracking_ang_vel: 0.0092
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 34 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.446684   14.819868    3.6551535]
+Lin vel: [0. 0. 0.]
+Command: [ 0.2722992  -0.01250441 -0.21019301]
+Actions: [ 1.          1.         -1.          1.          0.7327997  -0.55604327
+  0.97133285 -0.7569395 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1644
+  tracking_lin_vel: 0.0221
+  tracking_ang_vel: 0.0070
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 38 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.806366    -0.74923164 -29.84094   ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.22163063  0.0504306  -0.18022636]
+Actions: [ 0.3525081  -0.07235436  1.         -0.01081512  1.          1.
+  1.          0.81574696]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1594
+  tracking_lin_vel: 0.0265
+  tracking_ang_vel: 0.0077
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 11 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.80934   -6.283812 -35.541103]
+Lin vel: [0. 0. 0.]
+Command: [ 0.2857925  -0.00266032 -0.19808623]
+Actions: [-0.17769791  0.05702576 -0.09691343 -0.3035408   0.37412173 -1.
+  0.06333186 -0.9445189 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1655
+  tracking_lin_vel: 0.0208
+  tracking_ang_vel: 0.0073
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 82 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.206179  -2.695338 -36.31855 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.24729514  0.02144599 -0.03721246]
+Actions: [-4.2064270e-01  2.2148058e-02 -6.2616542e-04 -1.0000000e+00
+  1.0000000e+00 -1.0000000e+00  7.4632436e-01 -2.3967797e-01]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1592
+  tracking_lin_vel: 0.0244
+  tracking_ang_vel: 0.0099
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 99 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.02224   10.628533  -8.727754]
+Lin vel: [0. 0. 0.]
+Command: [ 0.10065625  0.04577763 -0.23216508]
+Actions: [-1.          0.50000656  1.         -0.59383327 -1.          1.
+  0.7310995  -0.56920975]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1508
+  tracking_lin_vel: 0.0363
+  tracking_ang_vel: 0.0065
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 127 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.884342   3.320741  -8.125006]
+Lin vel: [0. 0. 0.]
+Command: [ 0.2135659  -0.0924902  -0.04038197]
+Actions: [-0.6817524  -1.         -0.27863383  0.37784928 -0.35960358 -0.30387416
+ -0.01805881  1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1577
+  tracking_lin_vel: 0.0259
+  tracking_ang_vel: 0.0099
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 196 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.4124   -19.407106 -58.40516 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.10534554 -0.03882504 -0.07097112]
+Actions: [-0.39838338  0.01675221  0.36201915 -0.5729707   0.10814719  0.38822547
+ -0.55972713 -0.3451719 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1478
+  tracking_lin_vel: 0.0362
+  tracking_ang_vel: 0.0096
+  base_height: 0.0065
+  fall_penalty: -0.2000
+  energy_penalty: -0.0001
+
+=== Env 217 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-33.239635  -13.0234585 -23.617579 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.16488439 -0.07210572  0.28833568]
+Actions: [-1.          0.8256259   0.95080006 -0.5065968  -1.          0.89029074
+ -0.78012925  0.11336248]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1575
+  tracking_lin_vel: 0.0309
+  tracking_ang_vel: 0.0051
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 112 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.606857    2.6965337 -22.160917 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.27411237  0.04139838 -0.2549224 ]
+Actions: [ 0.22124714 -1.          0.3551954  -0.7613185   1.          0.1048001
+  0.7230826  -1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1660
+  tracking_lin_vel: 0.0216
+  tracking_ang_vel: 0.0059
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 511 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-33.03837  -13.457261 -44.96529 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.19608921  0.06601918 -0.02475801]
+Actions: [ 0.80933076 -0.282759    0.27920777  0.2368017  -0.02225349 -0.19099772
+ -0.00593215 -0.14254537]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1553
+  tracking_lin_vel: 0.0284
+  tracking_ang_vel: 0.0100
+  base_height: 0.0065
+  fall_penalty: -0.2000
+  energy_penalty: -0.0001
+
+=== Env 467 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.065613    3.1096609 -24.787657 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.26310834 -0.04930301  0.01752254]
+Actions: [ 1.         -0.1603292  -0.5432902   0.9421797  -0.09815687  0.70373285
+  0.25125563 -0.976645  ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1610
+  tracking_lin_vel: 0.0225
+  tracking_ang_vel: 0.0100
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 175 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.688173    3.3273628 -12.586825 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.27392244  0.04100841 -0.1257469 ]
+Actions: [-0.87013626  1.         -1.          0.20087239 -1.         -1.
+ -0.43593574  0.02004933]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1631
+  tracking_lin_vel: 0.0217
+  tracking_ang_vel: 0.0088
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 328 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.508698    6.9260535  -6.5680366]
+Lin vel: [0. 0. 0.]
+Command: [ 0.27740917  0.02218876 -0.10995197]
+Actions: [ 1.          1.         -0.53393084  0.56083804  0.6432764   0.75982654
+ -0.5340004  -1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1629
+  tracking_lin_vel: 0.0215
+  tracking_ang_vel: 0.0091
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 363 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.876684   9.111848 -16.726036]
+Lin vel: [0. 0. 0.]
+Command: [0.12025335 0.0441967  0.02339602]
+Actions: [ 0.6630775   0.2592856  -0.03791508 -0.19186574 -0.07418466 -0.89084786
+ -0.73054296  0.3004238 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1485
+  tracking_lin_vel: 0.0351
+  tracking_ang_vel: 0.0100
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 60 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.994553    2.3884559 -19.252201 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.13681006  0.05539487 -0.26043364]
+Actions: [ 0.6986705  -1.         -0.68250364 -0.12559168  0.3882789  -0.4887386
+  0.7393455   0.26275703]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1541
+  tracking_lin_vel: 0.0336
+  tracking_ang_vel: 0.0058
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 63 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.945446    1.8730456 -30.00577  ]
+Lin vel: [0. 0. 0.]
+Command: [0.21553409 0.03361433 0.04912519]
+Actions: [-1.         -0.9830737   1.          0.12011707  0.17083463  0.8421963
+  1.         -0.892452  ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1564
+  tracking_lin_vel: 0.0273
+  tracking_ang_vel: 0.0098
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 86 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.019688   7.671174 -20.799053]
+Lin vel: [0. 0. 0.]
+Command: [ 0.17716368 -0.08882046  0.09712479]
+Actions: [ 0.32007396  1.          0.7888157  -1.         -1.          0.41715226
+  0.69200826  1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1550
+  tracking_lin_vel: 0.0292
+  tracking_ang_vel: 0.0093
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 7 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.080048   8.409456 -14.503746]
+Lin vel: [0. 0. 0.]
+Command: [0.25620317 0.04502112 0.13307282]
+Actions: [ 1.         -0.22360514  0.07391822 -0.83156234  1.         -1.
+ -0.4253409  -0.23052034]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1616
+  tracking_lin_vel: 0.0233
+  tracking_ang_vel: 0.0087
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 9 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.37053     0.3572048 -12.835952 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.17597315 -0.05891898  0.19028541]
+Actions: [-0.36098406 -0.1316663   0.26832125 -1.         -0.7038236  -0.0826297
+ -0.47455642 -0.42179853]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1557
+  tracking_lin_vel: 0.0304
+  tracking_ang_vel: 0.0075
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 17 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.065994   11.233417  -11.8726425]
+Lin vel: [0. 0. 0.]
+Command: [ 0.14010687 -0.05467856 -0.2122593 ]
+Actions: [-0.12548855  0.08854959  0.3993817  -0.17510667 -1.          0.12853335
+  0.06658655  0.5913684 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1532
+  tracking_lin_vel: 0.0334
+  tracking_ang_vel: 0.0070
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 6 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.170204   -3.2523792 -31.373348 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.29613551  0.08207855 -0.11795469]
+Actions: [ 1.        -1.        -0.6413781 -0.2026276 -0.7913306 -1.
+ -1.         0.381475 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1658
+  tracking_lin_vel: 0.0188
+  tracking_ang_vel: 0.0089
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 13 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.937319    -0.95528114 -20.811647  ]
+Lin vel: [0. 0. 0.]
+Command: [0.2626948  0.08773329 0.00996816]
+Actions: [-0.36061135  1.          1.         -0.57095456 -0.5035201   0.5279109
+ -0.26536837 -0.24560757]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1619
+  tracking_lin_vel: 0.0217
+  tracking_ang_vel: 0.0100
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 25 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.537973   7.821574 -25.139301]
+Lin vel: [0. 0. 0.]
+Command: [ 0.2448006   0.05616278 -0.05945985]
+Actions: [ 0.89505905 -1.          0.6952363   0.6990313   0.29047102 -0.6407379
+ -0.02014077 -0.3890229 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1597
+  tracking_lin_vel: 0.0241
+  tracking_ang_vel: 0.0097
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 24 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.984154    -0.25495815 -30.73982   ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.15839419 -0.04275086 -0.06276141]
+Actions: [ 1.          1.          0.40641478  0.8102002  -1.         -0.31352255
+ -1.         -0.01632924]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1516
+  tracking_lin_vel: 0.0323
+  tracking_ang_vel: 0.0097
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 39 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.599646   9.194087 -20.291525]
+Lin vel: [0. 0. 0.]
+Command: [ 0.17003544  0.08468125 -0.21312863]
+Actions: [-0.5799947  -0.9409907   1.         -1.         -0.60704     0.52274114
+  1.         -1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1566
+  tracking_lin_vel: 0.0300
+  tracking_ang_vel: 0.0070
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 55 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.6033     7.197755 -23.759892]
+Lin vel: [0. 0. 0.]
+Command: [ 0.15358338 -0.05678783 -0.08531642]
+Actions: [-1.          1.          0.49822783 -1.         -0.07308962 -0.04722882
+ -1.         -0.05407047]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1518
+  tracking_lin_vel: 0.0323
+  tracking_ang_vel: 0.0094
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 10 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.26252   10.249531 -20.964905]
+Lin vel: [0. 0. 0.]
+Command: [0.12606053 0.06117048 0.1050851 ]
+Actions: [-0.73620075  0.66811603 -1.         -0.38608125  1.         -0.36355525
+ -0.48265356 -0.66940856]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1502
+  tracking_lin_vel: 0.0342
+  tracking_ang_vel: 0.0092
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 27 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.569286    0.8781551 -32.80421  ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.27169284 -0.02288143 -0.2975893 ]
+Actions: [ 0.58516747  0.5354122   0.1552966  -0.15778816  1.          0.05316222
+  1.          0.37309942]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1666
+  tracking_lin_vel: 0.0221
+  tracking_ang_vel: 0.0049
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 36 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.538542   -1.3925549 -28.234037 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.10956967 -0.01298489 -0.16355574]
+Actions: [ 0.8161052 -1.         0.5600994 -1.         0.7332354 -1.
+ -0.6448756 -1.       ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1492
+  tracking_lin_vel: 0.0363
+  tracking_ang_vel: 0.0081
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 8 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.482689   8.97842  -11.640673]
+Lin vel: [0. 0. 0.]
+Command: [ 0.16346654  0.04163506 -0.06362593]
+Actions: [-1.          0.16198908 -0.28601706 -0.36033112 -0.29385048  1.
+  0.5961103  -1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1520
+  tracking_lin_vel: 0.0319
+  tracking_ang_vel: 0.0097
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 16 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.723343   -1.2206471 -28.109123 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.26124173 -0.0680021  -0.11444128]
+Actions: [ 0.04087668 -0.7923571  -1.          0.22410421 -1.          0.39131847
+ -0.6429818  -0.14410624]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1622
+  tracking_lin_vel: 0.0223
+  tracking_ang_vel: 0.0090
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 26 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.336823    -0.83605975 -25.73608   ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.20412827  0.02606752 -0.2684186 ]
+Actions: [ 1.         -1.          0.6023356   0.9898085   0.04965165 -0.37398654
+  0.9758119   0.5606663 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1594
+  tracking_lin_vel: 0.0285
+  tracking_ang_vel: 0.0056
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 1 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.056208  -6.506437 -44.47574 ]
+Lin vel: [0. 0. 0.]
+Command: [0.17299756 0.00323806 0.26117766]
+Actions: [-0.6859082   0.7464855   0.7799576   0.23445797 -0.04982417  0.75883144
+ -1.          0.7046235 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1563
+  tracking_lin_vel: 0.0315
+  tracking_ang_vel: 0.0058
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 14 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.258327  13.580895  13.601533]
+Lin vel: [0. 0. 0.]
+Command: [ 0.23973134 -0.09514961 -0.13178931]
+Actions: [ 0.07075587  1.          0.27878815 -0.09765583 -0.7513939  -0.12470662
+ -1.         -0.05646803]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1614
+  tracking_lin_vel: 0.0235
+  tracking_ang_vel: 0.0087
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 15 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.142284  18.251678  11.436537]
+Lin vel: [0. 0. 0.]
+Command: [ 0.16614798  0.0935319  -0.25248858]
+Actions: [ 0.27986294 -0.62042487  0.42652267 -0.5094288   0.65213394 -1.
+ -0.21037182 -1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1576
+  tracking_lin_vel: 0.0299
+  tracking_ang_vel: 0.0060
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 4 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.42947    4.244161  -8.539513]
+Lin vel: [0. 0. 0.]
+Command: [ 0.2550069   0.01982448 -0.03340051]
+Actions: [-0.3809866  -0.25549698  0.35751224 -0.7981472  -0.9452885  -0.43035686
+ -1.          1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1599
+  tracking_lin_vel: 0.0237
+  tracking_ang_vel: 0.0099
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 18 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.25775     -0.35194048 -43.88274   ]
+Lin vel: [0. 0. 0.]
+Command: [0.11183436 0.07432462 0.1218155 ]
+Actions: [ 1.          0.87550664  0.8538437   1.         -0.22115806  0.87533075
+ -0.0860686   0.17627007]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1500
+  tracking_lin_vel: 0.0346
+  tracking_ang_vel: 0.0089
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 20 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.643343   -0.9156702 -23.286724 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.14022353 -0.05492978  0.17016736]
+Actions: [-1.         -0.5547328  -0.85969305 -0.5354917   1.         -0.64339685
+ -0.9683889   0.596598  ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1522
+  tracking_lin_vel: 0.0334
+  tracking_ang_vel: 0.0079
+  base_height: 0.0065
+  fall_penalty: -0.2000
+After reset - pos: tensor([0.0000, 0.0000, 0.5000], device='mps:0'), quat: tensor([1., 0., 0., 0.], device='mps:0')
+Default dof_pos: tensor([ 0.0000,  0.0000,  0.6000, -0.6000, -1.1000,  1.1000,  0.0000,  0.0000],
+       device='mps:0')
+
+=== Env 0 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.843962  -10.9857435 -31.519968 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.2076753   0.03417482 -0.09880565]
+Actions: [-0.11843037 -1.         -1.          1.          0.23578146 -0.5772444
+ -0.3482502   0.57858616]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1562
+  tracking_lin_vel: 0.0281
+  tracking_ang_vel: 0.0092
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 2 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.075523   5.697686  -9.681619]
+Lin vel: [0. 0. 0.]
+Command: [ 0.23026702  0.03862693 -0.10741161]
+Actions: [-0.7022374   0.75248384 -1.          0.08882252 -1.          0.9686354
+  0.41339034  0.5550629 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1585
+  tracking_lin_vel: 0.0259
+  tracking_ang_vel: 0.0091
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 3 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.910477   -2.2395408 -33.211597 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.28710982 -0.00730002 -0.19468081]
+Actions: [-0.03550734 -1.         -0.22891481  0.9349227   0.7700385  -1.
+  0.03086657 -0.17978664]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1655
+  tracking_lin_vel: 0.0207
+  tracking_ang_vel: 0.0074
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 5 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.44509     2.8872766 -20.987501 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.16539052 -0.01513951 -0.1664388 ]
+Actions: [-0.16249841 -0.07994971 -1.         -0.7776636  -0.6048949  -1.
+  0.89306986 -0.22713846]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1534
+  tracking_lin_vel: 0.0321
+  tracking_ang_vel: 0.0080
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 51 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.109255 -10.502997 -27.779457]
+Lin vel: [0. 0. 0.]
+Command: [0.18049653 0.03902207 0.22529662]
+Actions: [ 1.         -1.          0.87824386 -1.         -0.82344913 -0.07887114
+ -0.09911922  0.45314315]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1564
+  tracking_lin_vel: 0.0304
+  tracking_ang_vel: 0.0067
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 88 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-33.19653   -2.443146 -15.542956]
+Lin vel: [0. 0. 0.]
+Command: [ 0.12724134 -0.03298614  0.10084876]
+Actions: [-0.32311743 -1.         -0.9244606  -1.          0.8833885  -1.
+  0.2704361   0.2834832 ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1495
+  tracking_lin_vel: 0.0348
+  tracking_ang_vel: 0.0092
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 11 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.145157   -2.5245056 -26.521858 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.15370183  0.01822674 -0.04672343]
+Actions: [-0.1589447  -0.2637373   1.         -1.          0.16950491 -0.46817976
+  0.8653498  -1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1507
+  tracking_lin_vel: 0.0330
+  tracking_ang_vel: 0.0098
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 90 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-30.17106    3.899155   5.319264]
+Lin vel: [0. 0. 0.]
+Command: [ 0.23386943 -0.02479009  0.00124797]
+Actions: [-0.77705324 -0.27963406  0.56935054 -0.75648975  1.          0.4258406
+ -0.45818543  0.19799845]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1579
+  tracking_lin_vel: 0.0257
+  tracking_ang_vel: 0.0100
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 147 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.489775   7.735643 -17.40101 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.11780296  0.01954589 -0.26909238]
+Actions: [-1.          0.9942949  -0.8472618  -1.         -0.2517399   0.2951858
+ -0.4450948  -0.16319181]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1522
+  tracking_lin_vel: 0.0357
+  tracking_ang_vel: 0.0056
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 12 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.818607  20.944328  11.9223  ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.14746134 -0.07174387  0.23847616]
+Actions: [-1.          0.22081065 -0.8718238  -0.13267946  1.         -1.
+ -1.          0.14194098]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1549
+  tracking_lin_vel: 0.0323
+  tracking_ang_vel: 0.0063
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 48 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-32.441055   8.239029 -12.465084]
+Lin vel: [0. 0. 0.]
+Command: [ 0.17906435 -0.02589629 -0.2773382 ]
+Actions: [-1.          0.72620493  0.600709    0.9909458   1.          1.
+ -0.08631482 -0.10570347]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1573
+  tracking_lin_vel: 0.0308
+  tracking_ang_vel: 0.0054
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 84 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.981556    6.4168835 -17.417332 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.16921109 -0.02375295 -0.13208586]
+Actions: [ 0.52886534  1.         -0.2505933  -0.88149154 -1.         -0.7354727
+ -1.         -0.92581797]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1532
+  tracking_lin_vel: 0.0317
+  tracking_ang_vel: 0.0087
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 112 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.333214   -3.5592217 -23.40299  ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.10087738 -0.08484989 -0.07872728]
+Actions: [ 0.5124518   0.8189695  -0.84793913  0.366225    1.          1.
+ -0.5248685   0.00114503]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1492
+  tracking_lin_vel: 0.0348
+  tracking_ang_vel: 0.0095
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 284 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-33.032955    6.4360857 -11.340259 ]
+Lin vel: [0. 0. 0.]
+Command: [ 0.24748036  0.05029506 -0.00393677]
+Actions: [ 1.          1.          1.          0.8710071   0.6893783   1.
+ -0.36474892 -0.57658577]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1595
+  tracking_lin_vel: 0.0240
+  tracking_ang_vel: 0.0100
+  base_height: 0.0065
+  fall_penalty: -0.2000
+
+=== Env 344 | Step 0 ===
+Position: [0.  0.  0.5]
+Euler (deg): [-31.504524 -10.07263  -33.471165]
+Lin vel: [0. 0. 0.]
+Command: [0.291777   0.0051687  0.02655852]
+Actions: [-0.25814152  1.          0.3049923  -0.39595893  0.67433727 -0.06230364
+ -0.47529677  1.        ]
+DOF pos: [ 0.   0.   0.6 -0.6 -1.1  1.1  0.   0. ]
+Total reward: -0.1634
+  tracking_lin_vel: 0.0202
+  tracking_ang_vel: 0.0099
+  base_height: 0.0065
+  fall_penalty: -0.2000

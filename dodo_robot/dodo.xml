@@ -1,0 +1,116 @@
+<mujoco model="dodo_from_sw">
+  <compiler angle="radian"/>
+   <default>
+    <default class="dodo">
+      <general ctrlrange="-1000 1000" forcerange="-1000 1000"/>
+    </default>
+  </default>
+  <asset>
+    <mesh name="base_link_visuals" file="base_link_visuals.obj"/>
+    <mesh name="Left_HIP_visuals" file="Left_HIP_visuals.obj"/>
+    <mesh name="Left_THIGH_visuals" file="Left_THIGH_visuals.obj"/>
+    <mesh name="Left_SHIN_visuals" file="Left_SHIN_visuals.obj"/>
+    <mesh name="Left_FOOT_FE_visuals" file="Left_FOOT_FE_visuals.obj"/>
+    <mesh name="Right_HIP_visuals" file="Right_HIP_visuals.obj"/>
+    <mesh name="Right_THIGH_visuals" file="Right_THIGH_visuals.obj"/>
+    <mesh name="Right_SHIN_visuals" file="Right_SHIN_visuals.obj"/>
+    <mesh name="Right_FOOT_FE_visuals" file="Right_FOOT_FE_visuals.obj"/>
+    <texture name="grid" type="2d" builtin="checker"
+             width="200" height="200"
+             rgb1="0.8 0.8 0.8" rgb2="0.2 0.2 0.2"/>
+    <!-- 新增：地面材质 -->
+    <material name="ground_mat" texture="grid"
+              texrepeat="10 10" reflectance="0.1"/>
+  </asset>
+
+  <worldbody>
+   <light name="key_light"
+           directional="true"
+           diffuse="1 1 1"
+           specular="0.3 0.3 0.3"
+           pos="1 1 2"
+           dir="-1 -1 -2"/>
+
+    <!-- 如果想加辅助光，比如弱一点的环境光，可以再来一盏 -->
+    <light name="fill_light"
+           directional="false"
+           ambient="0.2 0.2 0.2"
+           diffuse="0.4 0.4 0.4"
+           pos="-1 -1 1"
+           dir="1 1 -1"/>
+
+    <!-- 新增：地面 geom（无限延展的平面） -->
+
+    <!-- <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="base_link_visuals"/> -->
+      <body name="base_link" pos="0 0 0.005">
+      <joint name="root" type="free"/>
+      <!-- 从 URDF 拷贝的惯性参数：
+           origin xyz="-0.12176 0.056469 0.116"
+           mass  = 1.5061
+           inertia 对角 = [ixx, iyy, izz] -->
+      <inertial pos="-0.12176 0.056469 0.116"
+                mass="1.5061"
+                diaginertia="0.0025805 0.0050145 0.0041706"/>
+      <geom type="mesh"
+            mesh="base_link_visuals"
+            rgba="0.79216 0.81961 0.93333 1"/>
+    
+    <body name="Left_HIP" pos="-0.04463 -0.051748 -0.012022" quat="0.527657 0.470719 0.52766 0.470719">
+      <inertial pos="-0.0026466 -0.011737 -0.061775" quat="0.976445 -0.215727 0.00299192 -0.00286858" mass="0.087538" diaginertia="6.82035e-05 4.94575e-05 2.4719e-05"/>
+      <joint name="Left_HIP_AA" pos="0 0 0" axis="0 0 1"/>
+      <geom type="mesh" rgba="0.75294 0.75294 0.75294 1" mesh="Left_HIP_visuals"/>
+      <body name="Left_THIGH" pos="0 -0.04009 -0.082259" quat="0.61414 -0.789197 0 0">
+      <!-- <body name="Left_THIGH" pos="0.0074574  -0.04009  -0.082259" quat="0.686232  -0.727383  0  0"> -->
+
+
+
+
+
+        <inertial pos="0.033704 -2.0834e-05 -0.1097" quat="0.999678 0.000157242 -0.0253642 -0.000555" mass="0.10378" diaginertia="0.00026878 0.00026178 1.61683e-05"/>
+        <joint name="Left_THIGH_FE" pos="0 0 0" axis="1 0 0"/>
+        <geom type="mesh" rgba="0.75294 0.75294 0.75294 1" mesh="Left_THIGH_visuals"/>
+        <body name="Left_SHIN" pos="0.017314 0 -0.2" quat="0.956642 0.291266 0 0">
+          <inertial pos="0.053841 -2.0803e-05 -0.1097" quat="0.999678 0.000156337 -0.0253635 -0.000551099" mass="0.10378" diaginertia="0.00026878 0.00026177 1.61613e-05"/>
+          <joint name="Left_KNEE_FE" pos="0 0 0" axis="1 0 0"/>
+          <geom type="mesh" rgba="0.75294 0.75294 0.75294 1" mesh="Left_SHIN_visuals"/>
+          <body name="Left_FOOT_FE" pos="0.040144 0 -0.2" quat="0.512627 0.487043 -0.512631 -0.487043">
+            <inertial pos="0.0093704 -0.022508 -0.030073" quat="0.184506 0.666061 0.1418 0.70867" mass="0.071589" diaginertia="6.11763e-05 5.30574e-05 1.74652e-05"/>
+            <joint name="Left_FOOT_ANKLE" pos="0 0 0" axis="0 0 1"/>
+            <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="Left_FOOT_FE_visuals"/>
+          </body>
+        </body>
+      </body>
+    </body>
+    <body name="Right_HIP" pos="-0.04463 -0.18375 -0.012022" quat="0.496748 0.503229 -0.496752 -0.503229">
+      <inertial pos="-0.0026476 -0.011738 0.061775" quat="0.976449 0.215707 -0.00299043 -0.00286824" mass="0.087539" diaginertia="6.82055e-05 4.94656e-05 2.47279e-05"/>
+      <joint name="Right_HIP_AA" pos="0 0 0" axis="0 0 1"/>
+      <geom type="mesh" rgba="0.75294 0.75294 0.75294 1" mesh="Right_HIP_visuals"/>
+      <body name="Right_THIGH" pos="0.0074574 -0.04009 0.082259" quat="0.686232 -0.727383 0 0">
+        <inertial pos="0.026247 -2.0681e-05 -0.1097" quat="0.999678 0.000157848 -0.0253728 -0.000574455" mass="0.10378" diaginertia="0.00026878 0.00026179 1.61749e-05"/>
+        <joint name="Right_THIGH_FE" pos="0 0 0" axis="1 0 0"/>
+        <geom type="mesh" rgba="0.75294 0.75294 0.75294 1" mesh="Right_THIGH_visuals"/>
+        <body name="Right_SHIN" pos="0.03745 0 -0.2" quat="0.999582 0.028916 0 0">
+          <inertial pos="0.026247 -2.0621e-05 -0.1097" quat="0.999678 0.000156717 -0.0253701 -0.000568576" mass="0.10378" diaginertia="0.00026878 0.00026178 1.6168e-05"/>
+          <joint name="Right_SHIN_FE" pos="0 0 0" axis="1 0 0"/>
+          <geom type="mesh" rgba="0.75294 0.75294 0.75294 1" mesh="Right_SHIN_visuals"/>
+          <body name="Right_FOOT_FE" pos="0.021998 0 -0.2" quat="0.499903 0.500095 0.499907 0.500095">
+            <inertial pos="0.0093694 -0.022508 0.020626" quat="-0.141808 0.708669 -0.1845 0.666062" mass="0.071587" diaginertia="6.11753e-05 5.30563e-05 1.74653e-05"/>
+            <joint name="Right_FOOT_ANKLE" pos="0 0 0" axis="0 0 1"/>
+            <geom type="mesh" rgba="0.79216 0.81961 0.93333 1" mesh="Right_FOOT_FE_visuals"/>
+          </body>
+        </body>
+      </body>
+    </body>
+  </body>
+  </worldbody>
+  <actuator>
+    <general class="dodo" name="actuator1" joint="Left_HIP_AA" gainprm="4500" biasprm="0 -4500 -450"/>
+    <general class="dodo" name="actuator2" joint="Right_HIP_AA" gainprm="4500" biasprm="0 -4500 -450"/>
+    <general class="dodo" name="actuator3" joint="Left_THIGH_FE" gainprm="4500" biasprm="0 -4500 -450"/>
+    <general class="dodo" name="actuator4" joint="Right_THIGH_FE" gainprm="4500" biasprm="0 -4500 -450"/>
+    <general class="dodo" name="actuator5" joint="Left_KNEE_FE" gainprm="3500" biasprm="0 -3500 -350"/>
+    <general class="dodo" name="actuator6" joint="Right_SHIN_FE" gainprm="3500" biasprm="0 -3500 -350"/>
+    <general class="dodo" name="actuator7" joint="Left_FOOT_ANKLE" gainprm="2000" biasprm="0 -2000 -200"/>
+    <general class="dodo" name="actuator8" joint="Right_FOOT_ANKLE" gainprm="2000" biasprm="0 -2000 -200"/>
+  </actuator>
+</mujoco>
