@@ -109,6 +109,8 @@ class Dodoenvironment:
         
 
         # initialize buffers - it is the short term memory of the simulation, storing current state information needed for control and learning
+        self.episode_lin_vel_sum = torch.zeros((self.num_envs,), device=gs.device, dtype=gs.tc_float)
+
         self.base_lin_vel = torch.zeros((self.num_envs, 3), device=gs.device, dtype=gs.tc_float)
         self.base_ang_vel = torch.zeros((self.num_envs, 3), device=gs.device, dtype=gs.tc_float)
         self.projected_gravity = torch.zeros((self.num_envs, 3), device=gs.device, dtype=gs.tc_float)
@@ -210,11 +212,17 @@ class Dodoenvironment:
         inv_base_quat = inv_quat(self.base_quat)
         self.base_lin_vel[:] = transform_by_quat(self.robot.get_vel(), inv_base_quat)   #get linear velocity in robot local frame. forward velocity is base_lin_vel[0](x axis), base_lin_vel[1](y axis) lateral, base_lin_vel[2](z axis) yaw. transform_by_quat rotates the World Velocity vector into the Robot's Body Frame.
         self.base_ang_vel[:] = transform_by_quat(self.robot.get_ang(), inv_base_quat)
+
+        # Accumulate forward velocity (X-axis) for averaging later
+        # You can also use torch.norm(self.base_lin_vel[:, :2], dim=1) if you want total horizontal speed
+        self.episode_lin_vel_sum += self.base_lin_vel[:, 0]
+
         self.projected_gravity = transform_by_quat(self.global_gravity, inv_base_quat)  #If the robot tips forward/backward, gravity projected into its frame changes accordingly. This helps PPO learn balance.
 
         #Proprioception: The sense of where your limbs are. These are passed directly to the neural network so it knows the configuration of its legs.
         self.dof_pos[:] = self.robot.get_dofs_position(self.motors_dof_idx)     #Angles of every motor (e.g., Hip is at 0.4 rad). Used in tracking reward & observations.
         self.dof_vel[:] = self.robot.get_dofs_velocity(self.motors_dof_idx)     #Speed of every motor (e.g., Knee is extending at 2.0 rad/s). 
+
         
         # ankle heights
         if len(self.ankle_links) > 0:
@@ -333,7 +341,42 @@ class Dodoenvironment:
         if len(envs_idx) == 0:      #in a single step if no envs need reset, stop immediately
             return
         
-        # reset dofs (the limbs/joints)
+        # --- 1. CALCULATE METRICS BEFORE RESETTING ---
+        # A. Calculate Average Velocity for the finishing episode
+        # We divide the accumulated velocity by the length of the episode
+        episode_len = self.episode_length_buf[envs_idx].float()
+        avg_vel = self.episode_lin_vel_sum[envs_idx] / episode_len
+        
+        # B. Calculate Success vs Failure
+        # Success = The episode length reached the max allowed length
+        # Failure = The episode ended early (fell over)
+        is_success = (self.episode_length_buf[envs_idx] >= self.max_episode_length).float()
+        is_failure = 1.0 - is_success
+
+        # --- 2. LOG TO EXTRAS (This sends to WandB) ---
+        # Note: We initialize "episode" dict if it doesn't exist
+        if "episode" not in self.extras:
+            self.extras["episode"] = {}
+
+        # Log Mean Linear Velocity
+        self.extras["episode"]["mean_lin_vel_x"] = torch.mean(avg_vel).item()
+        
+        # Log Success Rate (1.0 = 100% success, 0.0 = 0% success)
+        self.extras["episode"]["success_rate"] = torch.mean(is_success).item()
+        
+        # Log Termination/Fall Rate
+        self.extras["episode"]["fall_rate"] = torch.mean(is_failure).item()
+
+        # Log Rewards
+        for key in self.episode_sums.keys():
+            self.extras["episode"]["rew_" + key] = (
+                torch.mean(self.episode_sums[key][envs_idx]).item() / self.env_cfg["episode_length_s"]
+            )
+            self.episode_sums[key][envs_idx] = 0.0
+            
+        # --- 3. RESET BUFFERS ---
+        self.episode_lin_vel_sum[envs_idx] = 0.0 # <--- Important: Reset velocity accumulator
+        
         self.dof_pos[envs_idx] = self.default_dof_pos
         self.dof_vel[envs_idx] = 0.0
         self.robot.set_dofs_position(
@@ -343,7 +386,6 @@ class Dodoenvironment:
             envs_idx=envs_idx,
         )
 
-        # reset base
         self.base_pos[envs_idx] = self.base_init_pos
         self.base_quat[envs_idx] = self.base_init_quat.reshape(1, -1)
         self.robot.set_pos(self.base_pos[envs_idx], zero_velocity=False, envs_idx=envs_idx)
@@ -352,21 +394,13 @@ class Dodoenvironment:
         self.base_ang_vel[envs_idx] = 0
         self.robot.zero_all_dofs_velocity(envs_idx)
 
-        # reset buffers
         self.last_actions[envs_idx] = 0.0
         self.last_dof_vel[envs_idx] = 0.0
         self.episode_length_buf[envs_idx] = 0
         self.reset_buf[envs_idx] = True
 
-        # fill extras
-        self.extras["episode"] = {}
-        for key in self.episode_sums.keys():
-            self.extras["episode"]["rew_" + key] = (
-                torch.mean(self.episode_sums[key][envs_idx]).item() / self.env_cfg["episode_length_s"]
-            )
-            self.episode_sums[key][envs_idx] = 0.0
-
         self._resample_commands(envs_idx)
+
 
 
     '''
@@ -431,8 +465,8 @@ class Dodoenvironment:
         """Give constant reward for being alive and upright"""  #added 27.11
         roll = self.base_euler[:, 0].abs()
         pitch = self.base_euler[:, 1].abs()
-        thr_r = self.reward_cfg.get("roll_threshold", 30 * math.pi / 180)
-        thr_p = self.reward_cfg.get("pitch_threshold", 30 * math.pi / 180)
+        thr_r = self.reward_cfg.get("roll_threshold", 30.0)
+        thr_p = self.reward_cfg.get("pitch_threshold", 30.0)
         upright = ((roll < thr_r) & (pitch < thr_p)).float()
         return upright
 
@@ -443,8 +477,8 @@ class Dodoenvironment:
         roll = self.base_euler[:, 0].abs()
         pitch = self.base_euler[:, 1].abs()
 
-        thr_r = self.reward_cfg.get("roll_threshold", 30 * math.pi / 180)
-        thr_p = self.reward_cfg.get("pitch_threshold", 30 * math.pi / 180)
+        thr_r = self.reward_cfg.get("roll_threshold", 30.0)
+        thr_p = self.reward_cfg.get("pitch_threshold", 30.0)
 
         fail = ((roll > thr_r) | (pitch > thr_p)).float()
         return -fail
@@ -457,14 +491,38 @@ class Dodoenvironment:
         period = self.reward_cfg.get("period", 1.0)
         phase = (self.episode_length_buf.float() * self.dt) % period
         half = period * 0.5
-        contact = torch.zeros((self.num_envs, max(1, len(self.ankle_links))), device=self.device)
+        
+        # Get contact state
         if self.current_ankle_heights.numel():
             contact = (self.current_ankle_heights < self.CONTACT_HEIGHT).float()
+        else:
+            contact = torch.zeros((self.num_envs, 2), device=self.device)
+
+        # Desired contact states (1 = ON ground, 0 = IN AIR)
         desired_left = (phase < half).float()
         desired_right = (phase >= half).float()
-        if contact.shape[1] == 1:
-            return (desired_left * contact[:, 0] + desired_right * contact[:, 0]).clamp(0.0, 1.0)
-        return (desired_left * contact[:, 0] + desired_right * contact[:, 1]).clamp(0.0, 1.0)
+
+        # Calculate matches (1 if correct, 0 if wrong)
+        # We want Left to equal Desired_Left, and Right to equal Desired_Right
+        # Logic: 1.0 - abs(desired - actual)
+        left_score = 1.0 - torch.abs(desired_left - contact[:, 0])
+        right_score = 1.0 - torch.abs(desired_right - contact[:, 1])
+
+        # Return average success of both legs
+        return 0.5 * (left_score + right_score)
+
+    # def _reward_periodic_gait(self):
+    #     period = self.reward_cfg.get("period", 1.0)
+    #     phase = (self.episode_length_buf.float() * self.dt) % period
+    #     half = period * 0.5
+    #     contact = torch.zeros((self.num_envs, max(1, len(self.ankle_links))), device=self.device)
+    #     if self.current_ankle_heights.numel():
+    #         contact = (self.current_ankle_heights < self.CONTACT_HEIGHT).float()
+    #     desired_left = (phase < half).float()
+    #     desired_right = (phase >= half).float()
+    #     if contact.shape[1] == 1:
+    #         return (desired_left * contact[:, 0] + desired_right * contact[:, 0]).clamp(0.0, 1.0)
+    #     return (desired_left * contact[:, 0] + desired_right * contact[:, 1]).clamp(0.0, 1.0)
 
 
     # ============================================================

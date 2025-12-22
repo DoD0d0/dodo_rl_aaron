@@ -34,7 +34,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="/Users/aaronalexander/DoDodo/dodobot_v3/meshes/body_link.STL" />
+          filename="/home/aaron/dodo_rl/dodobot_v3/meshes/body_link.STL" />
       </geometry>
       <material
         name="">
@@ -78,7 +78,7 @@
         rpy="1.5708 0 1.5708" />
       <geometry>
         <mesh
-          filename="/Users/aaronalexander/DoDodo/dodobot_v3/meshes/right_link_1.STL" />
+          filename="/home/aaron/dodo_rl/dodobot_v3/meshes/right_link_1.STL" />
       </geometry>
       <material
         name="">
@@ -144,7 +144,7 @@
         rpy="0 1.5708 -1.5708" />
       <geometry>
         <mesh
-          filename="/Users/aaronalexander/DoDodo/dodobot_v3/meshes/right_link_2.STL" />
+          filename="/home/aaron/dodo_rl/dodobot_v3/meshes/right_link_2.STL" />
       </geometry>
       <material
         name="">
@@ -214,7 +214,7 @@
         rpy="0 1.5708 -1.5708" />
       <geometry>
         <mesh
-          filename="/Users/aaronalexander/DoDodo/dodobot_v3/meshes/right_link_3.STL" />
+          filename="/home/aaron/dodo_rl/dodobot_v3/meshes/right_link_3.STL" />
       </geometry>
       <material
         name="">
@@ -287,7 +287,7 @@
         rpy="1.5708 1.5708 0" />
       <geometry>
         <mesh
-          filename="/Users/aaronalexander/DoDodo/dodobot_v3/meshes/right_link_4.STL" />
+          filename="/home/aaron/dodo_rl/dodobot_v3/meshes/right_link_4.STL" />
       </geometry>
       <material
         name="">
@@ -361,7 +361,7 @@
         rpy="1.5708 0 1.5708" />
       <geometry>
         <mesh
-          filename="/Users/aaronalexander/DoDodo/dodobot_v3/meshes/left_link_1.STL" />
+          filename="/home/aaron/dodo_rl/dodobot_v3/meshes/left_link_1.STL" />
       </geometry>
       <material
         name="">
@@ -427,7 +427,7 @@
         rpy="1.5708 1.5708 0" />
       <geometry>
         <mesh
-          filename="/Users/aaronalexander/DoDodo/dodobot_v3/meshes/left_link_2.STL" />
+          filename="/home/aaron/dodo_rl/dodobot_v3/meshes/left_link_2.STL" />
       </geometry>
       <material
         name="">
@@ -500,7 +500,7 @@
         rpy="1.5708 1.5708 0" />
       <geometry>
         <mesh
-          filename="/Users/aaronalexander/DoDodo/dodobot_v3/meshes/left_link_3.STL" />
+          filename="/home/aaron/dodo_rl/dodobot_v3/meshes/left_link_3.STL" />
       </geometry>
       <material
         name="">
@@ -573,7 +573,7 @@
         rpy="0 1.5708 -1.5708" />
       <geometry>
         <mesh
-          filename="/Users/aaronalexander/DoDodo/dodobot_v3/meshes/left_link_4.STL" />
+          filename="/home/aaron/dodo_rl/dodobot_v3/meshes/left_link_4.STL" />
       </geometry>
       <material
         name="">

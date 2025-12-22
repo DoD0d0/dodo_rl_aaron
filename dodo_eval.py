@@ -24,7 +24,7 @@ from dodo_env_new_2 import Dodoenvironment
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-e", "--exp_name", type=str, default="dodo-walking-new")
+    parser.add_argument("-e", "--exp_name", type=str, default="dodo-walking-final")
     parser.add_argument("--ckpt", type=int, default=-1)
     parser.add_argument("-v", "--vel", type=float, default=0.5)
     parser.add_argument("-y", "--yvel", type=float, default=0.0)

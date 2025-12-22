@@ -24,6 +24,10 @@ noise_std = []
 total_reward = []
 ep_length = []
 
+mean_lin_vel_x = []
+success_rate = []
+fall_rate = []
+
 # Reward specific logs
 tracking_lin_vel = []
 tracking_ang_vel = []
@@ -53,6 +57,10 @@ def log_and_plot(log_dir, it, stats):
     total_reward.append(stats["episode_reward_mean"])
     ep_length.append(stats["episode_length_mean"])
 
+    mean_lin_vel_x.append(stats.get("mean_lin_vel_x", 0.0))
+    success_rate.append(stats.get("success_rate", 0.0))
+    fall_rate.append(stats.get("fall_rate", 0.0))
+
     # Active Rewards
     tracking_lin_vel.append(stats.get("tracking_lin_vel", 0.0))
     tracking_ang_vel.append(stats.get("tracking_ang_vel", 0.0))
@@ -73,11 +81,13 @@ def log_and_plot(log_dir, it, stats):
     wandb_log(it, stats)
 
     if it % 100 == 0:
-        fig, axes = plt.subplots(3, 5, figsize=(24, 12))
+        # CHANGED: 4, 6 creates 24 slots (You have 21 metrics, so 4x5=20 was too small)
+        
+        fig, axes = plt.subplots(4, 6, figsize=(24, 16))
         axes = axes.flatten()
         metrics = [
             val_loss, surrogate_loss, noise_std,
-            total_reward, ep_length, tracking_lin_vel, tracking_ang_vel, 
+            total_reward, ep_length, mean_lin_vel_x, success_rate, fall_rate,tracking_lin_vel, tracking_ang_vel, 
             base_height, fall_penalty, action_rate,
             periodic_gait, energy_penalty, foot_swing_clearance,
             forward_torso_pitch, knee_extension_at_push,
@@ -85,17 +95,20 @@ def log_and_plot(log_dir, it, stats):
         ]
         titles = [
             "Value Loss", "Surrogate Loss", "Action Noise Std",
-            "Mean Total Reward", "Mean Episode Length", "Tracking Lin Vel", 
+            "Mean Total Reward", "Mean Episode Length", "Mean X Velocity", "Reach End of Episode", "Terminated due to fall", "Tracking Lin Vel", 
             "Tracking Ang Vel", "Base Height",
             "Fall Penalty", "Action Rate Penalty",
             "Periodic Gait", "Energy Penalty", "Foot Swing Clearance",
             "Forward Torso Pitch", "Knee Ext. at Push",
             "Bird Hip Phase", "Hip Abduction Penalty", "Lateral Drift"
         ]
-        for ax, metric, title in zip(axes, metrics, titles):
-            ax.plot(iters, metric)
-            ax.set_title(title)
-            ax.tick_params(axis='x', rotation=45)
+        
+        # Handle case where we have more axes than metrics
+        for i, (metric, title) in enumerate(zip(metrics, titles)):
+            axes[i].plot(iters, metric)
+            axes[i].set_title(title)
+            axes[i].tick_params(axis='x', rotation=45)
+            
         plt.tight_layout()
         save_path = os.path.join(log_dir, "metrics.png")
         fig.savefig(save_path)
@@ -109,14 +122,14 @@ def get_train_cfg(exp_name, max_iterations):
             "class_name": "PPO",
             "clip_param": 0.2,
             "desired_kl": 0.01,
-            "entropy_coef": 0.005, #was 0.02
-            "gamma": 0.98,
+            "entropy_coef": 0.005,
+            "gamma": 0.99,
             "lam": 0.95,
             "learning_rate": 0.0002,
             "max_grad_norm": 1.0,
             "num_learning_epochs": 8,
             "num_mini_batches": 4,
-            "schedule": "fixed",    #was adaptive
+            "schedule": "adaptive",
             "use_clipped_value_loss": True,
             "value_loss_coef": 1.0,
         },
@@ -140,9 +153,9 @@ def get_train_cfg(exp_name, max_iterations):
             "run_name": "",
         },
         "runner_class_name": "OnPolicyRunner",
-        "num_steps_per_env": 24,
+        "num_steps_per_env": 100,
         "save_interval": 50,
-        "empirical_normalization": None,
+        "empirical_normalization": True,
         "seed": 1,
         "logger": "wandb",
         "tensorboard_subdir": "tb",
@@ -164,7 +177,7 @@ def get_cfgs():
             "left_joint_4", "right_joint_4"
         ],
         "kp": 40.0,
-        "kd": 2.0 * math.sqrt(40.0),
+        "kd": 1.0,
         "termination_if_roll_greater_than": 30,
         "termination_if_pitch_greater_than": 30,
         "base_init_pos": [0.0, 0.0, 0.55],
@@ -174,12 +187,11 @@ def get_cfgs():
         "action_scale": 0.25,
         "simulate_action_latency": False,
         "clip_actions": 1.0,
-        "robot_mjcf": "/Users/aaronalexander/DoDodo/dodobot_v3/urdf/dodobot_v3_simple.urdf",
+        "robot_mjcf": "dodobot_v3/urdf/dodobot_v3_simple.urdf",
         "foot_link_names": ["left_link_4", "right_link_4"]
     }
     obs_cfg = {
-        # "num_obs": 6(vel and ang vel) + 3(projected gravity) * [env_cfg["num_actions"] + 3](dof_pos, dof_vel, actions) + 3(commands) = 36
-        "num_obs": 36,  #added this 27.11, now includes lin vel, ang vel, proj gravity, commands, dof pos, dof vel, and previous action
+        "num_obs": 36,
         "obs_scales": {
             "lin_vel": 2.0,
             "ang_vel": 0.25,
@@ -189,21 +201,23 @@ def get_cfgs():
     }
     reward_cfg = {
         "reward_scales": {
-            "tracking_lin_vel": 2.0,
+            "tracking_lin_vel": 5.0,
             "tracking_ang_vel": 0.5,
-            #"orientation_stability": 0.3,
             "base_height": 1.0,
-            #"survive": 0.0,
             "fall_penalty": 10.0,
-            #"periodic_gait": 0.0,
-            "foot_swing_clearance": -5.0,
+            "foot_swing_clearance": 2.5,
+            "action_rate": -0.05,
+            "hip_abduction_penalty": 0.5,
+            
+            #"orientation_stability": 0.3,
+            #"survive": 0.0,
+            "periodic_gait": 1.0,
             #"knee_extension_at_push": 0.0,
             #"bird_hip_phase": 0.0,
             #"forward_torso_pitch": 0.0,
-            #"hip_abduction_penalty": 0.0,
+            
             #"lateral_drift_penalty": 0.0,
             #"energy_penalty": -0.01,
-            "action_rate": -0.1
         },
         "tracking_sigma": 0.25,
         "base_height_target": 0.35,
@@ -219,24 +233,24 @@ def get_cfgs():
         "bird_hip_sigma": 0.10,
         "hip_abduction_sigma": 0.10,
         "drift_sigma": 0.10,
-        "pitch_threshold": 30 * math.pi/180,
-        "roll_threshold": 30 * math.pi/180,
+        "pitch_threshold": 30.0,    #degrees
+        "roll_threshold": 30.0,     #degrees
     }
 
     command_cfg = {
         "num_commands": 3,
         "resampling_time_s": 2.0,
         "command_ranges": {
-            "lin_vel_x": [0.1, 0.3],
-            "lin_vel_y": [ -0.1, 0.1],
-            "ang_vel_yaw": [-0.3, 0.3]
+            "lin_vel_x": [0.1, 0.4],
+            "lin_vel_y": [ 0.0, 0.0],
+            "ang_vel_yaw": [0.0, 0.0]
         }       
     }
     return env_cfg, obs_cfg, reward_cfg, command_cfg
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-e", "--exp_name", type=str, default="dodo-walking-new")
+    parser.add_argument("-e", "--exp_name", type=str, default="dodo-walking-final")
     parser.add_argument("-B", "--num_envs", type=int, default=4096)
     parser.add_argument("--max_iterations", type=int, default=1500)
     args = parser.parse_args()
@@ -275,6 +289,9 @@ def main():
                 "optimizer_state_dict": self.alg.optimizer.state_dict(),
                 "iter": self.current_learning_iteration,
                 "infos": getattr(self, "infos", {}),
+                # --- ADDED: Save Normalization Stats ---
+                "obs_norm_state_dict": self.obs_normalizer.state_dict(),
+                "critic_obs_norm_state_dict": self.critic_obs_normalizer.state_dict(),
             }
             if hasattr(self.alg, "lr_scheduler"):
                 checkpoint["scheduler_state_dict"] = self.alg.lr_scheduler.state_dict()
@@ -282,6 +299,7 @@ def main():
             print(f"[CustomRunner] ✅ Saved checkpoint to {path}")
 
         def learn(self, num_learning_iterations, init_at_random_ep_len=False):
+            # ... (Rest of the learn function stays exactly the same) ...
             self.env.reset()
             obs, extras = self.env.get_observations()
             critic_obs = extras["observations"]["critic"].to(self.device)
@@ -312,7 +330,8 @@ def main():
                 self.alg.compute_returns(critic_obs)
                 mv, ms, *_ = self.alg.update()
 
-                # Stats init
+                # --- CORRECTED LOGIC START ---
+                # 1. Initialize Stats
                 stats = {
                     "value_loss": mv,
                     "surrogate_loss": ms,
@@ -321,42 +340,22 @@ def main():
                     "episode_length_mean": np.mean(lenbuffer),
                 }
 
-
-
-                # --- FIXED LOGIC START ---
-                for name in self.env.reward_scales.keys():
-                    stats[name] = 0.0
-
+                # 2. Collect ALL data (Rewards + Velocity/Success/Fall Rate)
                 mean_logs = {}
                 for ep in ep_infos:
                     for k, v in ep.items():
-                        # Strip "rew_" to match stats keys
+                        # Remove "rew_" prefix so rewards match config names
                         clean_name = k.replace("rew_", "")
-                        
-                        if clean_name in stats:
-                            mean_logs.setdefault(clean_name, []).append(v)
+                        # Collect everything! No 'if' check needed.
+                        mean_logs.setdefault(clean_name, []).append(v)
                 
+                # 3. Average the results and update stats
                 for k, v_list in mean_logs.items():
-                    stats[k] = float(np.mean(v_list))
-                # --- FIXED LOGIC END ---
+                    stats[k] = float(np.mean(v_list))                
+                # --- CORRECTED LOGIC END ---
 
                 log_and_plot(self.log_dir, it, stats)
                 self.current_learning_iteration = it
-
-                # --- improper logic that was causing 0.0 for all reward terms ---
-                # # zero all reward terms then fill from ep_infos
-                # for name in self.env.reward_scales.keys():
-                #     stats[name] = 0.0
-
-                # mean_logs = {}
-                # for ep in ep_infos:
-                #     for k, v in ep.items():
-                #         if k in stats:
-                #             mean_logs.setdefault(k, []).append(v.mean().cpu().item())
-                # for k, v_list in mean_logs.items():
-                #     stats[k] = float(np.mean(v_list))
-                # --- end of improper logic that was causing 0.0 for all reward terms ---
-
 
 
     # Create env and runner, then train

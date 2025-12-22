@@ -1,7 +1,15 @@
 __pycache__/
 *.pyc
+
+# Ignore system files
 .DS_Store
+
 wandb/
 *.zip
+
+# Ignore training logs and checkpoints
 logs/
+*.pt
+*.pkl
+
 .vscode/
